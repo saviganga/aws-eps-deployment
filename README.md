@@ -6,4 +6,5 @@ Create an ecs cluster
 
 1. EC2 Launch type
 - get your vpc and subnet data
-- launch an ALB 
+- launch an ALB (provision security group)
+- create a launch template (provision security group, key pairs)
