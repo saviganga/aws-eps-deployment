@@ -8,3 +8,4 @@ Create an ecs cluster
 - get your vpc and subnet data
 - launch an ALB (provision security group)
 - create a launch template (provision security group, key pairs)
+- provision an autoscaling group to launch/manage ec2 instances
