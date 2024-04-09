@@ -17,8 +17,19 @@ variable "PROJECT_NAME" {
 }
 
 
-# variable "INSTANCE_TYPE" {
-#   type    = string
-#   default = "t2.micro"
+variable "INSTANCE_TYPE" {
+  type    = string
+  default = "t2.micro"
 
-# }
+}
+
+
+variable "KEY_PAIR_NAME" {
+  type    = string
+  default = "ecs-deployment"
+}
+
+variable "PUBLIC_KEY" {
+  type    = string
+  default = "mb.pub"
+}
