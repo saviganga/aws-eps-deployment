@@ -1,34 +1,18 @@
-# Create Auto Scaling Group
-resource "aws_autoscaling_group" "asg" {
-  name             = "${var.PROJECT_NAME}-asg"
-  desired_capacity = 1
-  max_size         = 5
-  min_size         = 0
-
+resource "aws_autoscaling_group" "ecs_asg" {
   vpc_zone_identifier = data.aws_subnets.available_subnets.ids
+  desired_capacity    = var.ASG_DESIRED_CAPACITY
+  max_size            = var.ASG_MAX_CAPACITY
+  min_size            = var.ASG_MIN_CAPACITY
 
   launch_template {
     id      = aws_launch_template.ec2-tpl.id
     version = "$Latest"
   }
 
-  target_group_arns = [aws_lb_target_group.tg-ec2.arn]
-
-}
-
-resource "aws_autoscaling_policy" "asg-policy" {
-  name                   = "${var.PROJECT_NAME}-asg-policy"
-  policy_type            = "TargetTrackingScaling"
-  autoscaling_group_name = aws_autoscaling_group.asg.name
-  target_tracking_configuration {
-    predefined_metric_specification {
-      predefined_metric_type = "ASGAverageCPUUtilization"
-    }
-    target_value = 50.0
+  tag {
+    key                 = "AmazonECSManaged"
+    value               = true
+    propagate_at_launch = true
   }
 }
 
-
-output "asg_output" {
-  value = aws_autoscaling_group.asg.name
-}

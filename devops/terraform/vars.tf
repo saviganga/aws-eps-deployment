@@ -33,3 +33,45 @@ variable "PUBLIC_KEY" {
   type    = string
   default = "mb.pub"
 }
+
+variable "ASG_DESIRED_CAPACITY" {
+  type    = number
+  default = 1
+}
+
+variable "ASG_MAX_CAPACITY" {
+  type    = number
+  default = 3
+}
+
+variable "ASG_MIN_CAPACITY" {
+  type    = number
+  default = 1
+}
+
+variable "ASG_CAPACITY_PROVIDER_NAME" {
+  type    = string
+  default = "ganga"
+}
+
+
+variable "EXECUTION_ROLE_ARN" {
+  type = string
+  default = "arn:aws:iam::590184069711:role/ecsTaskExecutionRole"
+}
+
+
+variable "ECS_TASK_CPU" {
+  type    = number
+  default = 4096
+}
+
+variable "ECS_TASK_OS_FAMILY" {
+  type    = string
+  default = "LINUX"
+}
+
+variable "ECS_TASK_CPU_ARCHITECTURE" {
+  type    = string
+  default = "X86_64"
+}

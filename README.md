@@ -9,3 +9,4 @@ Create an ecs cluster
 - launch an ALB (provision security group)
 - create a launch template (provision security group, key pairs)
 - provision an autoscaling group to launch/manage ec2 instances
+- provision ecs cluster (capacity providers)
