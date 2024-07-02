@@ -11,6 +11,14 @@ resource "aws_security_group" "elb_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description = "Allow TLS inbound traffic from the internet"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   # Rule for HTTPS traffic (port 443)
   ingress {
     description = "Allow HTTPS inbound traffic from the internet"
